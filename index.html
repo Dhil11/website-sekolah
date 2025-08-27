@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SMK Negeri 1 Fadhil</title>
+  <style>
+    /* Reset sederhana */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      background: #640D5F; /* Sesuai tugas */
+      color: white;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #640D5F url('smk.jpg') no-repeat center center/cover;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px; /* Sesuai tugas */
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 24px; /* Sesuai tugas */
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #ffcc00;
+      padding: 12px 25px;
+      display: inline-block;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .hero .btn:hover {
+      background-color: #f3c200;
+    }
+
+    /* Content Sections */
+    .content {
+      padding: 60px 20px;
+      background-color: white;
+    }
+
+    .content.gray {
+      background-color: #eaeaea;
+    }
+
+    .content h3 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #640D5F;
+    }
+
+    .content p, .content ul {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .content ul {
+      list-style: square;
+      padding-left: 20px;
+    }
+
+    .content ul li {
+      margin-bottom: 10px;
+    }
+
+    /* Iframe (Google Maps) */
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background: #640D5F; /* Sesuai header */
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 16px;
+    }
+
+    /* ===== Tombol Toggle Mode ===== */
+    #toggleMode {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: black;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    #toggleMode:hover {
+      background-color: #ddd;
+      color: #000;
+    }
+
+    /* ===== Tombol Back to Top ===== */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #640D5F;
+      color: white;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    #backToTop:hover {
+      background-color: #4e094b;
+      transform: scale(1.1);
+    }
+
+    /* ===== Dark Mode Styles ===== */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode header {
+      background-color: #333;
+      color: #e0e0e0;
+    }
+
+    .dark-mode nav ul li a {
+      color: #e0e0e0;
+    }
+
+    .dark-mode .hero {
+      background-color: #1f1f1f;
+      color: #ddd;
+    }
+
+    .dark-mode .content.gray {
+      background-color: #2a2a2a;
+    }
+
+    .dark-mode .content {
+      background-color: #1e1e1e;
+    }
+
+    .dark-mode .content h3 {
+      color: #bb86fc;
+    }
+
+    .dark-mode .btn {
+      background-color: #bb86fc;
+      color: #000;
+    }
+
+    .dark-mode .btn:hover {
+      background-color: #9c6bdb;
+    }
+
+    .dark-mode footer {
+      background-color: #1a1a1a;
+      color: #ccc;
+    }
+
+    .dark-mode #toggleMode {
+      background: #333;
+      color: white;
+    }
+
+    .dark-mode #toggleMode:hover {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .dark-mode #backToTop {
+      background-color: #bb86fc;
+      color: black;
+    }
+
+    .dark-mode #backToTop:hover {
+      background-color: #9c6bdb;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>SMK Negeri 1 Fadhil</h1>
+      <nav>
+        <ul>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#jurusan">Jurusan</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+      <button id="toggleMode" aria-label="Toggle light and dark mode">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Selamat Datang di Website Resmi</h2>
+      <p>SMK Negeri 1 Fadhil – Sekolah Vokasi Berkualitas</p>
+      <a href="#profil" class="btn">Lihat Profil Sekolah</a>
+    </div>
+  </section>
+
+  <section id="profil" class="content">
+    <div class="container">
+      <h3>Profil Sekolah</h3>
+      <p>SMK Negeri 1 Fadhil merupakan sekolah kejuruan yang berkomitmen dalam mencetak generasi unggul dan siap kerja. Dengan tenaga pengajar profesional dan fasilitas modern, sekolah ini menjadi pilihan utama bagi siswa yang ingin mengembangkan keterampilan vokasi.</p>
+      <p>Kami menyediakan berbagai jurusan sesuai kebutuhan industri saat ini, serta program magang yang terintegrasi dengan dunia kerja. SMK Negeri 1 Fadhil terus berinovasi dalam sistem pembelajaran untuk menciptakan lulusan yang kompeten dan berdaya saing tinggi.</p>
+    </div>
+  </section>
+
+  <section id="jurusan" class="content gray">
+    <div class="container">
+      <h3>Jurusan Unggulan</h3>
+      <ul>
+        <li>Teknik Komputer dan Jaringan (TKJ)</li>
+        <li>Rekayasa Perangkat Lunak (RPL)</li>
+        <li>Akuntansi dan Keuangan Lembaga (AKL)</li>
+        <li>Otomatisasi dan Tata Kelola Perkantoran (OTKP)</li>
+        <li>Bisnis Daring dan Pemasaran (BDP)</li>
+        <li>Multimedia</li>
+      </ul>
+    </div>
+  </section>
+
+<section id="kontak" class="content">
+  <div class="container">
+    <h3>Kontak Kami</h3>
+    <p>Email: fadhil@email.com</p>
+    <p>Telepon: 0812-3456-7890</p>
+    <p>Alamat: Jl. Parangtritis KM 11, Manding, Bantul, Yogyakarta</p>
+
+    <!-- Google Maps -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.520420993188!2d110.3354045141141!3d-7.627218977405755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57c574389d13%3A0xd1c2e770c7f32e2b!2sSMK%20Negeri%201%20Bantul!5e0!3m2!1sid!2sid!4v1694077771234!5m2!1sid!2sid" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade"
+      aria-label="Peta Lokasi SMK Negeri 1 Fadhil"
+    ></iframe>
+
+    <!-- Form Saran -->
+    <div class="suggestion-form" style="margin-top: 40px;">
+      <h3>Kirim Saran Anda</h3>
+      <form id="formSaran">
+        <label for="nama">Nama:</label><br />
+        <input type="text" id="nama" name="nama" required style="width: 100%; padding: 8px; margin-bottom: 12px;" />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 12px;" />
+
+        <label for="saran">Saran:</label><br />
+        <textarea id="saran" name="saran" rows="5" required style="width: 100%; padding: 8px; margin-bottom: 12px;"></textarea>
+
+        <button type="submit" style="background-color: #640D5F; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+          Kirim
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 SMK Negeri 1 Fadhil. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Tombol Back to Top -->
+  <button id="backToTop" aria-label="Back to top">&#8679;</button>
+
+  <script>
+    // Toggle Dark Mode
+    const toggleBtn = document.getElementById('toggleMode');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        toggleBtn.textContent = '☀️ Light Mode';
+      } else {
+        toggleBtn.textContent = '🌙 Dark Mode';
+      }
+    });
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.onscroll = () => {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    };
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
